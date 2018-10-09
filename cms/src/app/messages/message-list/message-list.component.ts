@@ -7,13 +7,13 @@ import { Message } from '../message.model';
   styleUrls: ['./message-list.component.css']
 })
 export class MessageListComponent implements OnInit {
-  message: Message[] = [
+  messages: Message[] = [
     new Message(1, 'Homework', 'Hey can you help me with my homework tonight?', 'Nathan Thorne'),
     new Message(2, 'Missing Class Today', 'Hey I will not be able to make it to class I am sick', 'Brother Thayne'),
     new Message(3, 'Extra Credit', 'Hey my grade sucks can you help me out?', 'Kent Jackson')
   ]
   onAddMessage(message: Message){
-    this.message.push(message);
+    this.messages.push(message);
   }
 
   constructor() { }
