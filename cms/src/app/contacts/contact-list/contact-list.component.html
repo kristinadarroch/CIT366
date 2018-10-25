@@ -2,13 +2,13 @@
     <div class="panel-heading">
       <div class="row" style="margin-top: -14px;">
         <h2><span class="pull-left title" style="padding-left: 10px;">Contacts</span></h2>
-        <a class="btn btn-success pull-right" style="margin-right: 10px;">New Contact</a>
+        <a [routerLink]="['new']" class="btn btn-success pull-right" style="margin-right: 10px;">New Contact</a>
         </div>
       </div>
         <div class="panel-body">
         <div class="row">
          <div class="col-xs-12">
-          <cms-contact-item *ngFor="let contact of contacts" [contact]="contact" (click)="onSelected(contact)"></cms-contact-item>
+          <cms-contact-item *ngFor="let contact of contacts" [contact]="contact"></cms-contact-item>
         </div>
       </div>
     </div>

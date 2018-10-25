@@ -7,8 +7,8 @@
                      [src]="contacts?.imageUrl"
                      style="max-width: 50%; float: right;" />
               </span>
-            <a class="btn btn-danger pull-right" style="margin-right: 10px;">Delete</a>
-            <a class="btn btn-primary pull-right" style="margin-right: 10px;">Edit</a>
+            <a (click)="onDelete()" class="btn btn-danger pull-right" style="margin-right: 10px;">Delete</a>
+            <a [routerLink]="['edit']" class="btn btn-primary pull-right" style="margin-right: 10px;">Edit</a>
             </div>
     </div>
     <div class="panel-body">

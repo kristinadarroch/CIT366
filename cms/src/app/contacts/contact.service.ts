@@ -5,6 +5,7 @@ import { MOCKCONTACTS } from './MOCKCONTACTS';
 @Injectable()
 export class ContactService {
   contactSelectedEvent = new EventEmitter<contact[]>();
+  contactChangedEvent = new EventEmitter<contact[]>();
   contacts: contact[] = []
 
   constructor() { 
@@ -22,6 +23,19 @@ export class ContactService {
       }
     }
     return null;
+  }
+
+  deleteContact(contact: contact){
+    if(contact === null){
+      return;
+    }
+
+    const pos = this.contacts.indexOf(contact);
+      if(pos < 0){
+        return;
+      }
+    this.contacts.splice(pos, 1);
+    this.contactChangedEvent.emit(this.contacts.slice())
   }
 
 }
