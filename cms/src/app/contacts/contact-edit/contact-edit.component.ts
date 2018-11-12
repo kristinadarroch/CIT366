@@ -53,9 +53,8 @@ export class ContactEditComponent implements OnInit {
     let newId = this.contactService.getMaxId();
     newId = newId++;
     let values = form.value;
-    let newContact = new contact(newId.toString(), values['name'], values['email'], values['phone'], values['imageUrl'], null);
+    let newContact = new contact(newId.toString(), values['name'], values['email'], values['phone'], values['imageUrl'], this.groupContacts);
     if (this.editMode) {
-      console.log('here');
       this.contactService.updateContact(this.originalContact, newContact);
     } else {
       this.contactService.addContact(newContact);
@@ -94,6 +93,8 @@ export class ContactEditComponent implements OnInit {
     }
     this.groupContacts.push(selectedContact);
     this.invalidGroupContact = false;
+    console.log('group contacts',this.groupContacts);
+    console.log('selected contact',selectedContact); 
   }
 
   onRemoveItem(idx: number) {
