@@ -3,7 +3,8 @@
     <span class="list-group-item-heading" >{{contact?.name}}</span>
   </div>
   <span class="pull-right">
-    <img class="img-responsive"
+    <img *ngIf="contact.imageUrl"
+         class="img-responsive"
          [src]="contact?.imageUrl"
          style="max-width: 50%; float: right;" />
   </span>

@@ -42,7 +42,7 @@ export class ContactEditComponent implements OnInit {
           this.contact = JSON.parse(JSON.stringify(this.originalContact));
 
           if (this.contact.group != null) {
-            this.groupContacts = JSON.parse(JSON.stringify(this.originalContact.group))
+            this.groupContacts = JSON.parse(JSON.stringify(this.originalContact.group));
             this.groupContacts = this.contact.group.slice();
           }
         }
@@ -59,10 +59,7 @@ export class ContactEditComponent implements OnInit {
     } else {
       this.contactService.addContact(newContact);
     }
-    console.log('new contact',newContact);
-    
     this.router.navigate(['/contact']);
-   
     }
 
   onCancel(){
