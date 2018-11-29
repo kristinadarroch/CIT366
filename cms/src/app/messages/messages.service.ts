@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Message } from './message.model';
 import { MOCKMESSAGES } from './MOCKMESSAGES';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { ContactService } from '../contacts/contact.service';
 
 @Injectable()
@@ -30,6 +30,17 @@ export class MessagesService {
     // return this.messages.slice();
   }
 
+  storeMessages(){
+    this.messages = JSON.parse(JSON.stringify(this.messages));
+    const header = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.http.put('https://kristinadarrochcms.firebaseio.com/messages.json', this.messages, { headers: header})
+    .subscribe(
+      (messages: Message[]) => {
+        this.messageListChangedEvent.next(this.messages.slice());
+      }
+      );
+  }
+
   getMessages(){
     this.http.get('https://kristinadarrochcms.firebaseio.com/messages.json')
     .subscribe(
@@ -54,8 +65,11 @@ export class MessagesService {
   }
 
   addMessage(message: Message){
+    if (!message) {
+      return;
+    }
     this.messages.push(message);
-    this.messageListChangedEvent.emit(this.messages.slice());
+    this.storeMessages();
   }
 
   getMaxId(): number{
