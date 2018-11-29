@@ -10,25 +10,7 @@ export class MessagesService {
   messages: Message[];
   maxMessageId: Number;
 
-  constructor(private http: HttpClient, private contactService: ContactService) { 
-    // this.messages = MOCKMESSAGES;
-  }
-
-  initMessages(){
-    // this.http.get<Message[]>('https://kristinadarrochcms.firebaseio.com/messages.json')
-    //   .subscribe(
-    //     (contacts: Message[]) => {
-    //       console.log(this.messages);
-          // this.messages = messages;
-          // this.maxMessageId = this.getMaxId();
-          // this.messages.sort((a, b) => (a.name > b.name) ? 1: ((b.name > a.name) ? -1: 0));
-          // this.messageChangeEvent.next(this.messages.slice());
-    //     });
-    // (error: any) => {
-    //   console.log(error);
-    // }
-    // return this.messages.slice();
-  }
+  constructor(private http: HttpClient, private contactService: ContactService) { }
 
   storeMessages(){
     this.messages = JSON.parse(JSON.stringify(this.messages));
