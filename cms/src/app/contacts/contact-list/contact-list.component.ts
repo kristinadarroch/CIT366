@@ -18,13 +18,13 @@ export class ContactListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.contactService.getContacts();
     this.subscription = this.contactService.contactListChangedEvent
     .subscribe(
       (contactList: contact[]) => {
         this.contacts = contactList;
       }
     );
+    this.contactService.getContacts();
   }
 
   ngOnDestroy(){

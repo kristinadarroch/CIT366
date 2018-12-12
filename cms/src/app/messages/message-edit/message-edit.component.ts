@@ -8,7 +8,7 @@ import { MessagesService } from '../messages.service';
   styleUrls: ['./message-edit.component.css']
 })
 export class MessageEditComponent implements OnInit {
-  public currentSender: string = '1';
+  currentSender = '5c099eb61c8c857638bbfea9';
 
    @ViewChild('subject') subjectRef: ElementRef;
    @ViewChild('msgText') msgTextRef: ElementRef;
@@ -18,7 +18,7 @@ export class MessageEditComponent implements OnInit {
   onSendMessage(){
     const subject = this.subjectRef.nativeElement.value;
     const msgText = this.msgTextRef.nativeElement.value;
-    const newMessage = new Message('1', subject, msgText, this.currentSender);
+    const newMessage = new Message('', subject, msgText, this.currentSender);
     this.messagesService.addMessage(newMessage);
     this.onClear();
   }
